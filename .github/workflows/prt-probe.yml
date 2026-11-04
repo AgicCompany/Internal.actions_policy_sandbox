@@ -1,0 +1,15 @@
+name: PRT probe
+
+# Test probe for #1208: a pull_request_target workflow that is NOT included in
+# the temporary allowlist policy. It checks out nothing and runs no PR code.
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize]
+
+permissions: {}
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "pull_request_target probe ran for ${{ github.workflow_ref }}"
